@@ -21,7 +21,7 @@ export const Linkedin = () => {
 
   
   return (
-    <div>
+    <div className='h-full'>
       <div className='bg-red-200'>
         <div>
           <Link to='add-linkedin' >
@@ -34,14 +34,11 @@ export const Linkedin = () => {
       </div>
 
 
-      <div className='flex flex-col justify-center items-center bg-lime-200'>
-        
+      <div className='flex items-center flex-col bg-lime-200 h-screen'>
         {
           usersData.map((item, id) => <LiUsers key={id} {...item} />)
         }
       </div>
-
-
     </div>
   )
 }
