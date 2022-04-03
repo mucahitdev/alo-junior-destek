@@ -6,7 +6,7 @@ import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App container mx-auto">
+    <div className="App container mx-auto ">
       <Navbar />
       <Routes>
         <Route path="/" element={<Linkedin />} />

@@ -3,6 +3,8 @@ import { LiUsers } from '../components'
 import { collection, query, orderBy, onSnapshot } from "firebase/firestore"
 import { db } from '../firebase'
 import { Link } from 'react-router-dom'
+import ReactLoading from 'react-loading';
+
 
 
 
@@ -19,10 +21,9 @@ export const Linkedin = () => {
     })
   }, [])
 
-  
   return (
-    <div className='h-full'>
-      <div className='bg-red-200'>
+    <div className=''>
+      <div className='my-4'>
         <div>
           <Link to='add-linkedin' >
             <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
@@ -32,13 +33,20 @@ export const Linkedin = () => {
 
         </div>
       </div>
+      
+      {
+        usersData.length === 0 ? <div className='h-full flex items-center justify-center'><ReactLoading type='spinningBubbles' color='#ffffff'  height={50} width={50} /></div> :
+          <div>
+            <span className='text-white'>Bulunan kullanıcı sayısı: <b>{usersData.length}</b></span>
 
 
-      <div className='flex items-center flex-col bg-lime-200 h-screen'>
-        {
-          usersData.map((item, id) => <LiUsers key={id} {...item} />)
-        }
-      </div>
+            <div className='flex sm:flex-wrap flex-col sm:flex-row '>
+              {
+                usersData.map((item, id) => <LiUsers key={id} {...item} />)
+              }
+            </div>
+          </div>
+      }
     </div>
   )
 }
