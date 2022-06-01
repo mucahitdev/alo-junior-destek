@@ -23,11 +23,16 @@ export const Linkedin = () => {
 
   return (
     <div className=''>
-      <div className='my-4'>
-        <div>
+      <div className='my-4 '>
+        <div className='space-x-6'>
           <Link to='add-linkedin' >
             <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
               Add Linkedin
+            </button>
+          </Link>
+          <Link to='add-github' >
+            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+              Add Github
             </button>
           </Link>
 
