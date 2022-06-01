@@ -38,9 +38,9 @@ export const Linkedin = () => {
   return (
     <div className=''>
       <div className='my-4 '>
-        <div className='space-x-6'>
+        <div className='sm:space-x-6'>
           <Link to='add-linkedin' >
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mb-4 sm:m-0">
               Add Linkedin
             </button>
           </Link>
