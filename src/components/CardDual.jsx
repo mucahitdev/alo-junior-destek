@@ -60,9 +60,8 @@ export const CardDual = ({ data: { github, linkedin } }) => {
           </div>
         </div>
         <div className="">
-          <p className="text-sm">
-            {" "}
-            <b>{userBio(bio)}</b>{" "}
+          <p className="text-xs px-2">
+            <b>{userBio(bio)}</b>
           </p>
           <p>
             Takipçi: <b>{followers}</b>
