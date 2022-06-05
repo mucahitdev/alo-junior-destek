@@ -4,6 +4,7 @@ import ReactLoading from "react-loading";
 export const CardDual = ({ data: { github, linkedin } }) => {
   const [gitData, setGitData] = useState([]);
 
+
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetch(`https://api.github.com/users/${github}`);
@@ -25,18 +26,24 @@ export const CardDual = ({ data: { github, linkedin } }) => {
     login,
     twitter_username,
   } = gitData;
+  
+  const blogControl = () => {
+    if (blog?.includes("http")) {
+      if(blog.includes("linkedin")){
+        return false
+      }
+      return true
+    }
+    return false
+  }
+
   if (gitData.length === 0) {
     return (
-      <ReactLoading
-        type="spinningBubbles"
-        color="#ffffff"
-        height={50}
-        width={50}
-      />
+      <div></div>
     );
   }
   return (
-    <div className="p-1 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5">
+    <div className="p-1 w-full px-10 sm:px-1 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5">
       <div className="my-2 bg-blue-300 rounded-2xl space-y-4 min-h-[300px] flex flex-col justify-between">
         <div className="bg-red-300 rounded-2xl drop-shadow-md flex justify-center items-center p-2">
           <img src={avatar_url} alt={name} className="w-14 h-14 rounded-full" />
@@ -57,7 +64,7 @@ export const CardDual = ({ data: { github, linkedin } }) => {
           </p>
           {location && <p>Konum: <b>{location}</b></p>}
           {company && <p>Şirket: <b>{company}</b></p>}
-          {blog && (
+          {blogControl() && (
             <p>
               Blog:
               <a href={blog} target="_blank" rel="noreferrer">
@@ -70,7 +77,7 @@ export const CardDual = ({ data: { github, linkedin } }) => {
           <a href={`https://www.linkedin.com/in/${linkedin}`}>
             <button
               type="button"
-              className="py-2 px-3 text-sm font-medium text-gray-900 bg-white rounded-l-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white"
+              className="py-2 px-3 text-sm font-medium rounded-l-lg border focus:z-10  bg-gray-700 border-gray-600 text-white hover:bg-gray-600  hover:text-white"
             >
               Linkedin
             </button>
@@ -79,7 +86,7 @@ export const CardDual = ({ data: { github, linkedin } }) => {
             <a href={`https://twitter.com/${twitter_username}`}>
               <button
                 type="button"
-                className="py-2 px-3 text-sm font-medium text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white"
+                className="py-2 px-3 text-sm font-medium border-t border-b  focus:z-10 bg-gray-700 border-gray-600 text-white hover:bg-gray-600"
               >
                 Twitter
               </button>
@@ -88,7 +95,7 @@ export const CardDual = ({ data: { github, linkedin } }) => {
           <a href={`https://github.com/${github}`}>
             <button
               type="button"
-              className="py-2 px-3 text-sm font-medium text-gray-900 bg-white rounded-r-md border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white"
+              className="py-2 px-3 text-sm font-medium rounded-r-md border bg-gray-700 border-gray-600 text-white hover:bg-gray-600"
             >
               Github
             </button>

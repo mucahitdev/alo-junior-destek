@@ -1,7 +1,7 @@
 import React from "react";
 import { collection, addDoc, Timestamp } from "firebase/firestore";
 import { db } from "../firebase";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useFormik } from "formik";
 import { validationSchema2 } from "../helper";
 
@@ -80,6 +80,16 @@ export const AddGithub = () => {
           Send User
         </button>
       </form>
+      <div className="text-white">
+        <div className="text-red-400"> Uyarı </div>
+        <div>
+          Eğer githup hesabınız yoksa sizi
+          <Link to="/add-linkedin">
+            <span className="text-green-400"> buraya </span>
+          </Link>
+          alalım.
+        </div>
+      </div>
       <div className="text-white">
         <div className="text-orange-400"> Bilgilendirme </div>
         <div>
