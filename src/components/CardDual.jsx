@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 export const CardDual = ({ data: { github, linkedin } }) => {
   const [gitData, setGitData] = useState([]);
 
-
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetch(`https://api.github.com/users/${github}`);
@@ -25,22 +24,32 @@ export const CardDual = ({ data: { github, linkedin } }) => {
     login,
     twitter_username,
   } = gitData;
-  
+
   const blogControl = () => {
     if (blog?.includes("http")) {
-      if(blog.includes("linkedin")){
-        return false
+      if (blog.includes("linkedin")) {
+        return false;
       }
-      return true
+      return true;
     }
-    return false
-  }
+    return false;
+  };
 
   if (gitData.length === 0) {
-    return (
-      <div></div>
-    );
+    return <div></div>;
   }
+
+  const userBio = (str) => {
+    if (str) {
+      const strLen = str.split("").length;
+      if (strLen > 80) {
+        return str.substring(0, 80) + "...";
+      } else {
+        return str;
+      }
+    }
+  };
+
   return (
     <div className="p-1 w-full px-10 sm:px-1 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5">
       <div className="my-2 bg-blue-300 rounded-2xl space-y-4 min-h-[300px] flex flex-col justify-between">
@@ -53,7 +62,7 @@ export const CardDual = ({ data: { github, linkedin } }) => {
         <div className="">
           <p className="text-sm">
             {" "}
-            <b>{bio}</b>{" "}
+            <b>{userBio(bio)}</b>{" "}
           </p>
           <p>
             Takipçi: <b>{followers}</b>
@@ -61,8 +70,16 @@ export const CardDual = ({ data: { github, linkedin } }) => {
           <p>
             Takip edilen: <b>{following}</b>
           </p>
-          {location && <p>Konum: <b>{location}</b></p>}
-          {company && <p>Şirket: <b>{company}</b></p>}
+          {location && (
+            <p>
+              Konum: <b>{location}</b>
+            </p>
+          )}
+          {company && (
+            <p>
+              Şirket: <b>{company}</b>
+            </p>
+          )}
           {blogControl() && (
             <p>
               Blog:
@@ -72,7 +89,10 @@ export const CardDual = ({ data: { github, linkedin } }) => {
             </p>
           )}
         </div>
-        <div className="inline-flex rounded-lg shadow-sm mx-auto pb-4" role="group">
+        <div
+          className="inline-flex rounded-lg shadow-sm mx-auto pb-4"
+          role="group"
+        >
           <a href={`https://www.linkedin.com/in/${linkedin}`}>
             <button
               type="button"
