@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import ReactLoading from "react-loading";
 
 export const CardDual = ({ data: { github, linkedin } }) => {
   const [gitData, setGitData] = useState([]);
